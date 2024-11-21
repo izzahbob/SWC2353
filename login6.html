@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shuoizz Store - Log In</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .login-container {
+            min-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .login-box {
+            display: flex;
+            width: 100%;
+            max-width: 1000px;
+            min-height: 500px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .left {
+            flex: 1;
+            background: linear-gradient(45deg, #9DC183, #708238);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .left .illustration {
+            width: 80%;
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+
+        .left h3 {
+            font-size: 24px;
+            margin: 20px 0 10px;
+        }
+
+        .left p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .right {
+            flex: 1;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Form elements */
+        .right h2 {
+            margin: 0 0 30px 0;
+            color: #333;
+            font-size: 28px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #708238;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background: #9DC183;
+        }
+
+        .links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .links a {
+            color: #708238;
+            text-decoration: none;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Animation for the illustration */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .illustration {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .login-box {
+                flex-direction: column;
+            }
+            
+            .left, .right {
+                padding: 30px;
+            }
+
+            .left .illustration {
+                width: 60%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">Shuoizz Store</div>
+            <nav>
+                <ul>
+                    <li><a href="index5.html">Home</a></li>
+                    <li class="dropbtn">
+                        <a href="#">Categories</a>
+                        <div class="dropdown-content">
+                            <a href="catagories-popular.html">Popular</a>
+                            <a href="catagories-high rating.html">High Rating</a>
+                            <a href="catagories-new arrival.html">New Arrival</a>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">Contact/Help</a></li>
+                    <li class="dropbtn">
+                        <a href="#" onclick="toggleAccountDropdown()">Account</a>
+                        <div id="accountDropdown" class="dropdown-content">
+                            <a href="login6.html">Log In</a>
+                            <a href="#" onclick="showFavorites()">Favourite (<span id="favouriteCount">0</span>)</a>
+                            <a href="#">Cart (<span id="cartCount">0</span>)</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container" role="main">
+        <div class="login-container">
+            <div class="login-box">
+                <div class="left">
+                    <svg class="illustration" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Shopping bag base -->
+                        <path d="M100 150 L300 150 L280 350 L120 350 Z" fill="white" opacity="0.9"/>
+                        
+                        <!-- Bag handles -->
+                        <path d="M140 150 C140 100, 160 80, 180 80 C200 80, 220 100, 220 150" fill="none" stroke="white" stroke-width="12" opacity="0.9"/>
+                        <path d="M180 150 C180 100, 200 80, 220 80 C240 80, 260 100, 260 150" fill="none" stroke="white" stroke-width="12" opacity="0.9"/>
+                        
+                        <!-- Decorative elements -->
+                        <circle cx="200" cy="200" r="30" fill="white" opacity="0.7"/>
+                        <rect x="170" y="250" width="60" height="10" rx="5" fill="white" opacity="0.7"/>
+                        <rect x="180" y="270" width="40" height="10" rx="5" fill="white" opacity="0.7"/>
+                        
+                        <!-- Stars -->
+                        <path d="M320 80 L325 90 L335 92 L327 100 L329 110 L320 105 L311 110 L313 100 L305 92 L315 90 Z" fill="white" opacity="0.8"/>
+                        <path d="M100 250 L105 260 L115 262 L107 270 L109 280 L100 275 L91 280 L93 270 L85 262 L95 260 Z" fill="white" opacity="0.8"/>
+                        <path d="M280 200 L285 210 L295 212 L287 220 L289 230 L280 225 L271 230 L273 220 L265 212 L275 210 Z" fill="white" opacity="0.8"/>
+                    </svg>
+                    <h3>Welcome Back!</h3>
+                    <p>Sign in to access your account and start shopping</p>
+                </div>
+                <div class="right">
+                    <h2>Login to Shuoizz Store</h2>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <button id="loginButton" type="button">Login</button>
+                    <div class="links">
+                        <a href="forgotpassword.html">Forgot your password?</a>
+                        <a href="signin.html">Create an account</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Favorites Popup -->
+    <div id="favoritesPopup" class="popup">
+        <div class="popup-content">
+            <h2>Your Favorites</h2>
+            <div id="favorites-list"></div>
+            <button id="close-favorites">Close</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <p>At Shuoizz Store, we provide stylish, comfortable, and high-quality shoes for every occasion. Step confidently with our carefully curated collection!</p>
+            </div>
+            <div class="footer-section">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="contact.html">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Newsletter</h4>
+                <p>Subscribe for exclusive offers and updates</p>
+                <form>
+                    <input type="email" placeholder="Enter your email" style="width: 100%; padding: 0.5rem; margin-top: 0.5rem;">
+                    <button type="submit" class="btn" style="margin-top: 0.5rem;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2023 Shuoizz Store. All rights reserved.</p>
+        </div>
+    </footer>
+	
+	<script src="index5.js"></script>
+	<script>
+        // Wait for the DOM to load before attaching the event listener
+        document.addEventListener("DOMContentLoaded", function() {
+            const loginButton = document.getElementById("loginButton");
+    
+            // Add click event listener to the button
+            loginButton.addEventListener("click", function() {
+                // Redirect to index5.html
+                window.location.href = "index5.html";
+            });
+        });
+    </script>
+	<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const loginButton = document.getElementById("loginButton");
+
+        loginButton.addEventListener("click", () => {
+            // Simulate a successful login
+            localStorage.setItem("loggedIn", true);
+
+            // Redirect to the previous page or the homepage
+            window.location.href = "checkout2.html";
+        });
+    });
+</script>
+
+</body>
+</html>

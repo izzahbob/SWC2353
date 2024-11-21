@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shuoizz Store - Contact</title>
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	
+	<style>
+	.contact-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #708238;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 20px;
+            color: #4A5D23;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #708238;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #9DC183;
+            border-radius: 4px;
+            background-color: #f7fbf7;
+        }
+        textarea {
+            height: 120px;
+        }
+        input[type="submit"] {
+            background-color: #9DC183;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #708238;
+        }
+        .shoe-icon {
+            font-size: 2em;
+            margin-right: 10px;
+        }
+/* Add new styles for the popup */
+        .popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #F0FFF0;
+            border: 2px solid #708238;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+        .popup h3 {
+            color: #708238;
+            margin-bottom: 10px;
+        }
+        .popup-close {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 5px 15px;
+            background-color: #9DC183;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .popup-close:hover {
+            background-color: #708238;
+        }
+		
+		.feature-marquee {
+    overflow: hidden;
+    background-color: #708238;
+    padding: 10px 0;
+    white-space: nowrap;
+}
+
+.marquee-content {
+    display: inline-flex;
+    animation: scroll 35s linear infinite;
+}
+
+.marquee-item {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+    font-size: 1rem;
+    color: #FFF;
+}
+
+.marquee-item img {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+	</style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">Shuoizz Store</div>
+            <nav>
+                <ul>
+                    <li><a href="index5.html">Home</a></li>
+                    <li class="dropbtn">
+                        <a href="#">Categories</a>
+                        <div class="dropdown-content">
+                            <a href="catagories-popular.html">Popular</a>
+                            <a href="catagories-high rating.html">High Rating</a>
+                            <a href="catagories-new arrival.html">New Arrival</a>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">Contact/Help</a></li>
+                    <li class="dropbtn">
+                        <a href="#" onclick="toggleAccountDropdown()">Account</a>
+                        <div id="accountDropdown" class="dropdown-content">
+                            <a href="login6.html">Log In</a>
+                            <a href="#" onclick="showFavorites()">Favourite (<span id="favouriteCount">0</span>)</a>
+                            <a href="#">Cart (<span id="cartCount">0</span>)</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+	
+	<div class="feature-marquee">
+    	<div class="marquee-content">
+			<div class="marquee-item">
+				<span>Free Shipping on Orders Over $50</span>
+			</div>
+			
+			<div class="marquee-item">
+				<span>Exclusive Sneakers Collection</span>
+			</div>
+			
+			<div class="marquee-item">
+				<span>Limited Edition Releases</span>
+			</div>
+			
+			<div class="marquee-item">
+				<span>Comfort & Style for Every Season</span>
+			</div>
+			
+			<div class="marquee-item">
+				<span>Free Shipping on Orders Over $50</span>
+			</div>
+			
+			<div class="marquee-item">
+				<span>Exclusive Sneakers Collection</span>
+			</div>
+			
+			<div class="marquee-item">
+				<span>Limited Edition Releases</span>
+			</div>
+			
+			<div class="marquee-item">
+				<span>Comfort & Style for Every Season</span>
+			</div>
+			<!-- Repeat items if you want continuous scrolling -->
+    	</div>
+	</div>
+
+    <div class="contact-container">
+        <h2><span class="shoe-icon">👟</span>Step Into Touch</h2>
+        <p>We're head over heels to hear from you! Whether you're tiptoeing around a question or ready to sprint into a purchase, lace up your thoughts and let's start a conversation that fits just right.</p>
+        <p>
+            Shuoizz Store - Where Every Step Tells a Story<br>
+            123 ABC Street, ABC City, ABC 12345<br>
+            Hotline: 111-WALK-THIS-WAY<br>
+            Email: <a href="mailto:soles@shuoizzstore.com">soles@shuoizzstore.com</a>
+        </p>
+        <form id="contactForm" action="#" method="post">
+            <label for="name">Your Name (so we know what to shout when your perfect pair arrives):</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email (where we can send virtual high-fives and exclusive kicks):</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Put your best foot forward (tell us what's on your mind):</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <input type="submit" value="Kick It Our Way!">
+        </form>
+    </div>
+	
+	<div class="overlay" id="overlay"></div>
+    <div id="thankYouPopup" class="popup">
+        <h3>Thank You for Stepping In!</h3>
+        <p>We've received your message and we're lacing up to respond. We'll be in touch faster than you can say "shoe sale"!</p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+    <!-- Favorites Popup -->
+    <div id="favoritesPopup" class="popup">
+        <div class="popup-content">
+            <h2>Your Favorites</h2>
+            <div id="favorites-list"></div>
+            <button id="close-favorites">Close</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <p>At Shuoizz Store, we provide stylish, comfortable, and high-quality shoes for every occasion. Step confidently with our carefully curated collection!</p>
+            </div>
+            <div class="footer-section">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="contact.html">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Newsletter</h4>
+                <p>Subscribe for exclusive offers and updates</p>
+                <form>
+                    <input type="email" placeholder="Enter your email" style="width: 100%; padding: 0.5rem; margin-top: 0.5rem;">
+                    <button type="submit" class="btn" style="margin-top: 0.5rem;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2023 Shuoizz Store. All rights reserved.</p>
+        </div>
+    </footer>
+	
+	<script src="index5(2).js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Dropdown functionality
+            var dropdownBtn = document.querySelector('.dropbtn');
+            var dropdown = document.querySelector('.dropdown');
+
+            dropdownBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                dropdown.classList.toggle('dropdown-active');
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('dropdown-active');
+                }
+            });
+
+            // Form submission and popup functionality
+            var form = document.getElementById('contactForm');
+            var popup = document.getElementById('thankYouPopup');
+            var overlay = document.getElementById('overlay');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); // Prevent the form from actually submitting
+                
+                // Here you would typically send the form data to your server
+                // For this example, we'll just show the popup
+                
+                showPopup();
+            });
+        });
+
+        function showPopup() {
+            document.getElementById('thankYouPopup').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('thankYouPopup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+            
+            // Optional: Clear the form after submission
+            document.getElementById('contactForm').reset();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shuoizz Store - Check out</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>  
+        .checkout-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+        }
+
+        .checkout-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        .form-section h2 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        /* Order Summary Styles */
+        .order-summary {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+
+        .order-summary h2 {
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .order-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .item-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .item-name {
+            font-size: 0.9rem;
+        }
+
+        .item-price {
+            font-weight: bold;
+        }
+
+        .total {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid #eee;
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .place-order-btn {
+            width: 100%;
+            padding: 1rem;
+            background-color: #708238;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .place-order-btn:hover {
+            background-color: #9DC183;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">Shuoizz Store</div>
+            <nav>
+                <ul>
+                    <li><a href="index5.html">Home</a></li>
+                    <li class="dropbtn">
+                        <a href="#">Categories</a>
+                        <div class="dropdown-content">
+                            <a href="catagories-popular.html">Popular</a>
+                            <a href="catagories-high rating.html">High Rating</a>
+                            <a href="catagories-new arrival.html">New Arrival</a>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">Contact/Help</a></li>
+                    <li class="dropbtn">
+                        <a href="#" onclick="toggleAccountDropdown()">Account</a>
+                        <div id="accountDropdown" class="dropdown-content">
+                            <a href="login6.html">Log In</a>
+                            <a href="#" onclick="showFavorites()">Favourite (<span id="favouriteCount">0</span>)</a>
+                            <a href="#">Cart (<span id="cartCount">0</span>)</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <div class="checkout-container">
+        <div class="checkout-form">
+            <div class="form-section">
+                <h2>Shipping Information</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" required>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="zipCode">ZIP Code</label>
+                        <input type="text" id="zipCode" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Payment Information</h2>
+                <div class="form-group">
+                    <label for="cardNumber">Card Number</label>
+                    <input type="text" id="cardNumber" required>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="expiryDate">Expiry Date</label>
+                        <input type="text" id="expiryDate" placeholder="MM/YY" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="order-summary">
+            <h2>Order Summary</h2>
+            <div id="orderItems"></div>
+            <div class="total" id="orderTotal"></div>
+            <button class="place-order-btn" onclick="placeOrder()">Place Order</button>
+			
+    </div>-->
+		<div class="order-summary">
+    <h2>Order Summary</h2>
+    <div id="orderItems"></div>
+    <div class="total" id="orderTotal"></div>
+    <button class="place-order-btn" onclick="placeOrder()">Place Order</button>
+</div>
+
+        </div>
+	
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <p>NULL NULL NULL NULL</p>
+            </div>
+            <div class="footer-section">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="contact.html">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Newsletter</h4>
+                <p>Subscribe for exclusive offers and updates</p>
+                <form>
+                    <input type="email" placeholder="Enter your email" style="width: 100%; padding: 0.5rem; margin-top: 0.5rem;">
+                    <button type="submit" class="btn" style="margin-top: 0.5rem;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2023 Shuoizz Store. All rights reserved.</p>
+        </div>
+    </footer>
+	
+	<script src="index5(2).js"></script>
+
+    <script>
+        // Cart management functions
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function addToCart(item) {
+            cart.push(item);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
+    // Retrieve the cart from localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const orderItems = document.getElementById('orderItems');
+    orderItems.innerHTML = ''; // Clear existing items
+
+    let subtotal = 0;
+
+    // Loop through each item in the cart and display it
+    cart.forEach(item => {
+        subtotal += item.price;
+
+        const itemElement = document.createElement('div');
+        itemElement.className = 'order-item';
+        itemElement.innerHTML = `
+            <div class="item-details">
+                <img src="${item.image || 'default-image.jpg'}" 
+                     alt="${item.name}" 
+                     style="width: 50px; height: auto; margin-right: 10px;">
+                <span class="item-name">${item.name}</span>
+                <span class="item-price">$${item.price.toFixed(2)}</span>
+            </div>
+        `;
+        orderItems.appendChild(itemElement);
+    });
+
+    // Calculate and display totals
+    const tax = Math.round(subtotal * 0.1 * 100) / 100; // Example: 10% tax
+    const total = Math.round((subtotal + tax) * 100) / 100;
+
+    orderItems.innerHTML += `
+        <div class="order-item">
+            <strong>Subtotal:</strong>
+            <span>$${subtotal.toFixed(2)}</span>
+        </div>
+        <div class="order-item">
+            <strong>Tax:</strong>
+            <span>$${tax.toFixed(2)}</span>
+        </div>
+        <div class="order-item">
+            <strong>Shipping:</strong>
+            <span>Free</span>
+        </div>
+    `;
+    document.getElementById('orderTotal').innerHTML = `
+        <span>Total:</span>
+        <span>$${total.toFixed(2)}</span>
+    `;
+}
+
+            // Calculate and display totals
+            const tax = subtotal * 0.1; // 10% tax
+            const total = subtotal + tax;
+
+            orderItems.innerHTML += `
+                <div class="order-item">
+                    <strong>Subtotal:</strong>
+                    <span>$${subtotal.toFixed(2)}</span>
+                </div>
+                <div class="order-item">
+                    <strong>Tax:</strong>
+                    <span>$${tax.toFixed(2)}</span>
+                </div>
+                <div class="order-item">
+                    <strong>Shipping:</strong>
+                    <span>Free</span>
+                </div>
+            `;
+
+            document.getElementById('orderTotal').innerHTML = `
+                <span>Total:</span>
+                <span>$${total.toFixed(2)}</span>
+            `;
+        }
+
+        // Place order function
+        function placeOrder() {
+            // Validate form fields
+            const requiredFields = [
+                'firstName', 'lastName', 'email', 'address', 
+                'city', 'zipCode', 'cardNumber', 'expiryDate', 'cvv'
+            ];
+            
+            const missingFields = requiredFields.filter(field => 
+                !document.getElementById(field).value
+            );
+
+            if (missingFields.length > 0) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            if (cart.length === 0) {
+                alert('Your cart is empty');
+                return;
+            }
+
+            // Process order (in a real application, this would send data to a server)
+            alert('Order placed successfully!');
+            
+            // Clear cart
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartDisplay();
+
+            // Clear form
+            requiredFields.forEach(field => 
+                document.getElementById(field).value = ''
+            );
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', updateCartDisplay);
+		
+		
+/*function updateCartDisplay() {
+    // Retrieve the cart from localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const orderItems = document.getElementById('orderItems');
+    orderItems.innerHTML = '';  // Clear existing items
+
+    let subtotal = 0;
+    
+    // Loop through each item in the cart and display it
+    cart.forEach(item => {
+        subtotal += item.price;
+        
+        const itemElement = document.createElement('div');
+        itemElement.className = 'order-item';
+        itemElement.innerHTML = `
+            <div class="item-details">
+                <img src="${item.image}" alt="${item.name}" style="width: 50px; height: auto; margin-right: 10px;">
+                <span class="item-name">${item.name}</span>
+                <span class="item-price">$${item.price.toFixed(2)}</span>
+            </div>
+        `;
+        orderItems.appendChild(itemElement);
+    });
+
+    // Calculate and display totals
+    const tax = subtotal * 0.1; // Example: 10% tax
+    const total = subtotal + tax;
+
+    orderItems.innerHTML += `
+        <div class="order-item">
+            <strong>Subtotal:</strong>
+            <span>$${subtotal.toFixed(2)}</span>
+        </div>
+        <div class="order-item">
+            <strong>Tax:</strong>
+            <span>$${tax.toFixed(2)}</span>
+        </div>
+        <div class="order-item">
+            <strong>Shipping:</strong>
+            <span>Free</span>
+        </div>
+    `;
+    document.getElementById('orderTotal').innerHTML = `
+        <span>Total:</span>
+        <span>$${total.toFixed(2)}</span>
+    `;
+}*/
+
+
+    </script>
+	
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Retrieve cart data from localStorage
+    const cartData = JSON.parse(localStorage.getItem("cartData")) || [];
+    const cartItemsContainer = document.getElementById("checkoutCartItems");
+
+    // Display each item in the cart on the checkout page
+    cartData.forEach((item) => {
+        const cartItemElement = document.createElement("div");
+        cartItemElement.classList.add("checkout-cart-item");
+
+        cartItemElement.innerHTML = `
+            <img src="${item.image}" alt="${item.productName}">
+            <div class="checkout-item-details">
+                <h4>${item.productName}</h4>
+                <p>${item.category}</p>
+                <span class="checkout-item-price">${item.price}</span>
+            </div>
+        `;
+
+        cartItemsContainer.appendChild(cartItemElement);
+    });
+
+    // Calculate and display the total
+    const total = cartData.reduce((sum, item) => sum + parseFloat(item.price.replace("$", "")), 0);
+    document.getElementById("checkoutTotal").innerText = `$${total.toFixed(2)}`;
+});
+</script>
+	<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Check if the user is logged in
+        const isLoggedIn = localStorage.getItem("loggedIn");
+
+        // Redirect to login page if not logged in
+        if (!isLoggedIn) {
+            alert("Please log in to access the checkout.");
+            window.location.href = "login6.html";
+        }
+    });
+</script>
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+    // Get cart data from local storage
+    const cartData = localStorage.getItem("cartData");
+
+    if (cartData) {
+        const cartItems = JSON.parse(cartData);
+
+        // Example: Render the cart items on the page
+        const cartContainer = document.getElementById("cartContainer"); // Ensure you have a container with this ID
+        cartItems.forEach(item => {
+            const productDiv = document.createElement("div");
+            productDiv.innerHTML = `
+                <div>
+                    <img src="${item.image}" alt="${item.name}" width="100">
+                    <h3>${item.name}</h3>
+                    <p>Price: $${item.price.toFixed(2)}</p>
+                </div>
+            `;
+            cartContainer.appendChild(productDiv);
+        });
+    } else {
+        console.log("No cart data found.");
+    }
+});
+
+	
+    function placeOrder() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        if (cart.length === 0) {
+            alert("Your cart is empty");
+            return;
+        }
+
+        // Save the order to history
+        const history = JSON.parse(localStorage.getItem("history")) || [];
+        history.push(...cart);
+        localStorage.setItem("history", JSON.stringify(history));
+
+        // Clear the cart
+        localStorage.removeItem("cart");
+        alert("Order placed successfully!");
+        window.location.href = "index5.html";
+    }
+</script>
+
+	<script>
+	document.addEventListener('DOMContentLoaded', function () {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const orderItemsContainer = document.getElementById('orderItems');
+
+    if (cart.length === 0) {
+        orderItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+        return;
+    }
+
+    let subtotal = 0;
+
+    cart.forEach((item) => {
+        subtotal += item.price;
+
+        const itemElement = document.createElement('div');
+        itemElement.classList.add('order-item');
+        itemElement.innerHTML = `
+            <div class="item-details">
+                <img src="${item.image}" alt="${item.name}" style="width: 50px; height: auto;">
+                <span>${item.name}</span>
+                <span>$${item.price.toFixed(2)}</span>
+            </div>
+        `;
+        orderItemsContainer.appendChild(itemElement);
+    });
+
+    const tax = subtotal * 0.1; // Example 10% tax
+    const total = subtotal + tax;
+
+    document.getElementById('orderTotal').innerHTML = `
+        <div>Subtotal: $${subtotal.toFixed(2)}</div>
+        <div>Tax: $${tax.toFixed(2)}</div>
+        <div><strong>Total: $${total.toFixed(2)}</strong></div>
+    `;
+});
+
+</script>
+	<script>
+	document.addEventListener('DOMContentLoaded', function () {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const orderItemsContainer = document.getElementById('orderItems');
+
+    if (cart.length === 0) {
+        orderItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+        return;
+    }
+
+    cart.forEach((item) => {
+        const itemElement = document.createElement('div');
+        itemElement.classList.add('order-item');
+        itemElement.innerHTML = `
+            <div class="item-details">
+                <img src="${item.image}" alt="${item.name}" style="width: 50px; height: auto; margin-right: 10px;">
+                <span class="item-name">${item.name}</span>
+                <span class="item-price">$${item.price.toFixed(2)}</span>
+            </div>
+        `;
+        orderItemsContainer.appendChild(itemElement);
+    });
+});
+</script>
+
+
+</body>
+</html>

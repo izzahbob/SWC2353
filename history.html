@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase History</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Purchase History</h1>
+    </header>
+    <main>
+        <div id="historyList"></div>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const history = JSON.parse(localStorage.getItem("history")) || [];
+            const historyList = document.getElementById("historyList");
+
+            if (history.length === 0) {
+                historyList.innerHTML = "<p>No purchase history available.</p>";
+                return;
+            }
+
+            history.forEach((item) => {
+                const div = document.createElement("div");
+                div.classList.add("history-item");
+                div.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" style="width: 50px; height: auto;">
+                    <p>${item.name} - $${item.price.toFixed(2)}</p>
+                `;
+                historyList.appendChild(div);
+            });
+        });
+    </script>
+</body>
+</html>

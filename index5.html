@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shuoizz Store - Home</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+		
+		.banner-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: scale(1.1); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.banner:hover {
+    transform: scale(1.05);
+    transition: transform 0.5s ease;
+}
+
+		nav ul li a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #9DC183;
+    transform: translateY(-3px);
+}
+
+		.product:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+        
+.feature-marquee {
+    overflow: hidden;
+    background-color: #708238;
+    padding: 10px 0;
+    white-space: nowrap;
+}
+
+.marquee-content {
+    display: inline-flex;
+    animation: scroll 35s linear infinite;
+}
+
+.marquee-item {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+    font-size: 1rem;
+    color: #FFF;
+}
+
+.marquee-item img {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+	.product-image {
+  position: relative;
+  display: inline-block;
+}
+
+.product-image .main-image,
+.product-image .hover-image {
+  display: block;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.product-image .hover-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.product-image:hover .main-image {
+  opacity: 0;
+}
+
+.product-image:hover .hover-image {
+  opacity: 1;
+}
+		
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">Shuoizz Store</div>
+            <nav>
+                <ul>
+                    <li><a href="index5.html">Home</a></li>
+                    <li class="dropbtn">
+                        <a href="#">Categories</a>
+                        <div class="dropdown-content">
+                            <a href="catagories-popular.html">Popular</a>
+                            <a href="catagories-high rating.html">High Rating</a>
+                            <a href="catagories-new arrival.html">New Arrival</a>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">Contact/Help</a></li>
+                    <li class="dropbtn">
+                        <a href="test/account4.html" onclick="toggleAccountDropdown()">Account</a>
+                        <div id="accountDropdown" class="dropdown-content">
+                            <a href="login6.html">Log In</a>
+							<a href="#" onclick="showFavorites()">Favourite (<span id="favouriteCount">0</span>)</a>
+                            <a href="#" onclick="toggleCart()">Cart (<span id="cartCount">0</span>)</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+	
+	<div class="feature-marquee">
+    	<div class="marquee-content">
+			<div class="marquee-item">
+				<span>Free Shipping on Orders Over $50</span>
+			</div>
+			
+			<div class="marquee-item">
+				<span>Exclusive Sneakers Collection</span>
+			</div>
+			
+			<div class="marquee-item">
+				<span>Limited Edition Releases</span>
+			</div>
+			
+			<div class="marquee-item">
+				<span>Comfort & Style for Every Season</span>
+			</div>
+			
+			<div class="marquee-item">
+				<span>Free Shipping on Orders Over $50</span>
+			</div>
+			
+			<div class="marquee-item">
+				<span>Exclusive Sneakers Collection</span>
+			</div>
+			
+			<div class="marquee-item">
+				<span>Limited Edition Releases</span>
+			</div>
+			
+			<div class="marquee-item">
+				<span>Comfort & Style for Every Season</span>
+			</div>
+			<!-- Repeat items if you want continuous scrolling -->
+    	</div>
+	</div>
+
+    <main class="container">
+        <section class="banner">
+            <div class="banner-content">
+                <h2>Summer Sale!</h2>
+                <p>Up to 50% off on selected items. Don't miss out on these amazing deals!</p>
+            </div>
+        </section>
+		
+        <section class="product">
+            <div class="product">
+				<div class="product-image">
+					<img src="img/shoe1.png" alt="Heeled" class="main-image">
+					<img src="img/shoez1.png" alt="Heeled" class="hover-image">
+				</div>
+                <div class="product-content">
+                  <h3>Easley</h3>
+                    <p>An Elegant Cut-Out Heeled</p>
+                    <div class="product-actions">
+                        <div class="add-to-favorites" onclick="toggleFavorite(this, 'Heeled')">
+                            <i class="fas fa-heart"></i>
+                        </div>
+						<button onclick="addItemToCart('Easley ', 239.90,'img/shoez1.png')"><i class="fa fa-shopping-cart"></i></button>
+                        <a href="#" class="btn" onclick="saveProductToCheckout('Easley', 239.90, 'img/shoez1.png')">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product">
+				<div class="product-image">
+					<img src="img/shoe2.png" alt="Sandal" class="main-image">
+					<img src="img/shoez2.png" alt="Sandal" class="hover-image">
+				</div>
+                <div class="product-content">
+                    <h3>Teena Orion</h3>
+                    <p>Discover our stylish sandal.</p>
+                    <div class="product-actions">
+                        <div class="add-to-favorites" onclick="toggleFavorite(this, 'Sandal')">
+                            <i class="fas fa-heart"></i>
+                        </div>
+						<button onclick="addItemToCart('Teena Orion', 219.00,'img/shoez2.png')"><i class="fa fa-shopping-cart"></i></button>
+                        <a href="#" class="btn" onclick="saveProductToCheckout('Teena Orion', 219.00, 'img/shoez2.png')">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product">
+				<div class="product-image">
+					<img src="img/shoe3.png" alt="Sneaker" class="main-image">
+					<img src="img/shoez3.png" alt="Sneaker" class="hover-image">
+				</div>
+                <div class="product-content">
+                    <h3>Gaskell Lace Mary Jane</h3>
+                    <p>Find the perfect sneaker for everyday walk.</p>
+                    <div class="product-actions">
+                        <div class="add-to-favorites" onclick="toggleFavorite(this, 'Sneaker')">
+                            <i class="fas fa-heart"></i>
+                        </div>
+						<button onclick="addItemToCart('Gaskell Lace Mary Jane', 329.90, 'img/shoez3.png')"><i class="fa fa-shopping-cart"></i></button>
+                        <a href="#" class="btn" onclick="saveProductToCheckout('Gaskell Lace Mary Jane', 329.90, 'img/shoez3.png')">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product">
+				<div class="product-image">
+					<img src="img/shoe4.png" alt="Boot" class="main-image">
+					<img src="img/shoez4.png" alt="Boot" class="hover-image">
+				</div>
+                <div class="product-content">
+                    <h3>Yenna Boot</h3>
+                    <p>Performance branded insole for comfort and elegance.</p>
+                    <div class="product-actions">
+                        <div class="add-to-favorites" onclick="toggleFavorite(this, 'Boot')">
+                            <i class="fas fa-heart"></i>
+                        </div>
+						<button onclick="addItemToCart('Yenna Boot', 219.00, 'img/shoez4.png')"><i class="fa fa-shopping-cart"></i></button>
+                        <a href="#" class="btn" onclick="saveProductToCheckout('Yenna Boot', 219.00, 'img/shoez4.png')">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product">
+				<div class="product-image">
+					<img src="img/shoe5.png" alt="Flat" class="main-image">
+					<img src="img/shoez5.png" alt="Flat" class="hover-image">
+				</div>
+                <div class="product-content">
+                    <h3>Shophie Fall</h3>
+                    <p>Elegant shoes for special occasions.</p>
+                    <div class="product-actions">
+                        <div class="add-to-favorites" onclick="toggleFavorite(this, 'Flat')">
+                            <i class="fas fa-heart"></i>
+                        </div>
+						<button onclick="addItemToCart('Shophie Fall', 129.00, 'img/shoez5.png')"><i class="fa fa-shopping-cart"></i></button>
+                        <a href="#" class="btn" onclick="saveProductToCheckout('Shophie Fall', 219.00, 'img/shoez5.png')">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product">
+				<div class="product-image">
+					<img src="img/shoe6.png" alt="Mules" class="main-image">
+					<img src="img/shoez6.png" alt="Mules" class="hover-image">
+				</div>
+                <div class="product-content">
+                    <h3>Crystal-Buckle Block-Heel</h3>
+                    <p>Comfortable shoes represent prettyness.</p>
+                    <div class="product-actions">
+                        <div class="add-to-favorites" onclick="toggleFavorite(this, 'Mules')">
+                            <i class="fas fa-heart"></i>
+                        </div>
+						<button onclick="addItemToCart('Crystal-Buckle Block-Heel', 269.90, 'img/shoes6.png)"><i class="fa fa-shopping-cart"></i></button>
+                        <a href="#" class="btn" onclick="saveProductToCheckout('Crystal-Buckle Block-Heel', 2669.90, 'img/shoes6.png')">Shop Now</a>
+                    </div>
+                </div >
+            </div>
+
+            <div class="product">
+				<div class="product-image">
+					<img src="img/shoe7.png" alt="Shoes" class="main-image">
+					<img src="img/shoez7.png" alt="Shoes" class="hover-image">
+				</div>
+                <div class="product-content">
+                    <h3>Eiko Espadrille</h3>
+                    <p>Comfortable shoes for growing feet.</p>
+                    <div class="product-actions">
+                        <div class="add-to-favorites" onclick="toggleFavorite(this, 'Shoes')">
+                            <i class="fas fa-heart"></i>
+                        </div>
+						<button onclick="addItemToCart('Eiko Espadrille', 199.00, 'img/shoez7.png')"><i class="fa fa-shopping-cart"></i></button>
+                        <a href="#" class="btn" onclick="saveProductToCheckout('Eiko Espadrille', 199.00, 'img/shoez7.png')">Shop Now</a>
+                    </div>
+                </div >
+            </div>
+			
+            <div class="product">
+				<div class="product-image">
+					<img src="img/shoe8.png" alt="Flat" class="main-image">
+					<img src="img/shoez8.png" alt="Flat" class="hover-image">
+				</div>
+                <div class="product-content">
+                    <h3>Studded Crossover-Strap Mary Jane</h3>
+                    <p>Performance shoe for everyday walk.</p>
+                    <div class="product-actions">
+                        <div class="add-to-favorites" onclick="toggleFavorite(this, 'Flat')">
+                            <i class="fas fa-heart"></i>
+                        </div>
+						<button onclick="addItemToCart('Studded Crossover-Strap Mary Jane', 219.90, 'img/shoez8.png')"><i class="fa fa-shopping-cart"></i></button>
+					  <a href="#" class="btn" onclick="saveProductToCheckout('Studded Crossover-Strap Mary Jane', 219.90, 'img/shoez8.png')">Shop Now</a>
+
+                  </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Favorites Popup -->
+    <div id="favoritesPopup" class="popup">
+        <div class="popup-content">
+            <h2>Your Favorites</h2>
+            <div id="favorites-list"></div>
+            <button id="close-favorites">Close</button>
+        </div>
+    </div>
+	
+	<!-- Cart Drawer -->
+<div id="cartDrawer">
+    <div class="cart-header">
+        <h2>Your Cart</h2>
+        <span onclick="toggleCart()">×</span>
+    </div>
+    <div id="cartItems">
+        <!-- Cart items will be dynamically added here with this structure:
+        <div class="cart-item">
+            <img src="product-image.jpg" alt="Product Name">
+            <div class="cart-item-details">
+                <h4>Product Name</h4>
+                <p>Category</p>
+                <span class="cart-item-price">$99.99</span>
+            </div>
+            <button class="remove-btn">×</button>
+        </div>
+        -->
+    </div>
+    <div class="cart-total">
+        Total: $<span id="cartTotal">0.00</span>
+    </div>
+    <button class="checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+
+</div>
+
+
+    <!-- Overlay for Cart Drawer -->
+    <div id="overlay" onclick="toggleCart()"></div>
+
+
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <p>At Shuoizz Store, we provide stylish, comfortable, and high-quality shoes for every occasion. Step confidently with our carefully curated collection!</p>
+            </div>
+            <div class="footer-section">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="contact.html">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Newsletter</h4>
+                <p>Subscribe for exclusive offers and updates</p>
+                <form>
+                    <input type="email" placeholder="Enter your email" style="width: 100%; padding: 0.5rem; margin-top: 0.5rem;">
+                    <button type="submit" class="btn" style="margin-top: 0.5rem;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2023 Shuoizz Store. All rights reserved.</p>
+        </div>
+    </footer>
+	
+	<script src="index5(2).js"></script>
+	<script>
+        
+	</script>
+</body>
+</html>
